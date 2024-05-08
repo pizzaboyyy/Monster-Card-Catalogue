@@ -62,7 +62,7 @@ cards_list = {
     ]
 }
 
-
+# Prints Cards
 for card_name, attributes_list in cards_list.items():
     print(f"Card: {card_name}")
     for attribute, value in attributes_list:
