@@ -1,16 +1,6 @@
 import easygui
 
 
-def search():
-    cards = list(cards_list.keys())
-    selected_card = easygui.buttonbox("Please pick a Card", "Search Card", choices=cards)
-
-    if selected_card:
-        card_details = cards_list[selected_card]
-        return selected_card, card_details
-    else:
-        return "No card selected."
-
 cards_list = {
     "Stoneling": [
         ["Strength", 7],
@@ -73,5 +63,3 @@ cards_list = {
         ["Cunning", 2]
     ]
 }
-
-

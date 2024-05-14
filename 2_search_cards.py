@@ -1,6 +1,6 @@
 import easygui
 
-
+# Function to show cards
 def search():
     cards = list(cards_list.keys())
     selected_card = easygui.buttonbox("Please pick a Card", "Search Card", choices=cards)
@@ -75,3 +75,15 @@ cards_list = {
 }
 
 
+
+
+card_name, card_attributes = search()
+
+# Print out Name And attributes when card selected
+if card_name != "No card selected.":
+    message = f"Selected Card: {card_name}\n\nAttributes:\n"
+    for attribute in card_attributes:
+        message += f"{attribute[0]}: {attribute[1]}\n"
+    easygui.msgbox(message, "Card Details")
+else:
+    easygui.msgbox("No card selected.", "Card Details")
