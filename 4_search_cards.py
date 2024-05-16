@@ -64,8 +64,9 @@ cards_list = {
 }
 
 def search_card():
-    search_name = easygui.enterbox("Enter the name of the card to search:")
-
+    search_name = easygui.enterbox("Enter the name of the card to search\n"
+                                   "*Make Sure To Spell Card Right*\n"
+                                   "*Capital Letters Matter*")
     if search_name:
         if search_name in cards_list:
             card_details = cards_list[search_name]
