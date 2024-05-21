@@ -89,6 +89,20 @@ def add_card():
                         f"Stealth: {card_attributes[2]}\n"
                         f"Cunning: {card_attributes[3]}")
 
+        confirm = easygui.ynbox(f"Please confirm the card details:\n\n{card_details}", "Confirm Card Details")
+        if confirm:
+            cards_list[card_name] = [
+                ["Strength", card_attributes[0]],
+                ["Speed", card_attributes[1]],
+                ["Stealth", card_attributes[2]],
+                ["Cunning", card_attributes[3]]
+            ]
+            easygui.msgbox("Card added successfully!", "Success")
+            break
+        else:
+            easygui.msgbox("Card details not confirmed please re enter the details", "re enter details")
+
+
 
 if 1 == 1:
     add_card()

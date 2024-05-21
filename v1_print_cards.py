@@ -64,32 +64,19 @@ cards_list = {
 }
 
 
-def add_card():
-    while True:
-        add_card = easygui.multenterbox("Add Card\nCard attributes must be between 1-25",
-                                        "Please Add New Card",
-                                        ["Name", "Strength", "Speed", "Stealth", "Cunning"])
+def print_cards():
+    message = ""
+    for card, attributes in cards_list.items():
+        message += f"{card}:\n"
+        for attribute in attributes:
+            message += f"{attribute[0]}: {attribute[1]} "
+        message += "\n"
+        message += "-------------------------------------------------------------------------"
+        message += "\n"
 
-        if add_card is None:
-            return
 
-        card_name = add_card[0]
-        try:
-            card_attributes = list(map(int, add_card[1:]))
-            if any(attr < 1 or attr > 25 for attr in card_attributes):
-                easygui.msgbox("Attributes Have To Be Between 1 And 25, Try again", "Error")
-                continue
-        except ValueError:
-            easygui.msgbox("Please enter valid numbers for the attributes", "Error")
-            continue
-
-        card_details = (f"Name: {card_name}\n"
-                        f"Strength: {card_attributes[0]}\n"
-                        f"Speed: {card_attributes[1]}\n"
-                        f"Stealth: {card_attributes[2]}\n"
-                        f"Cunning: {card_attributes[3]}")
+    easygui.msgbox(message, title="Cards list")
 
 
 if 1 == 1:
-    add_card()
-    easygui.msgbox(cards_list)
+    print_cards()
