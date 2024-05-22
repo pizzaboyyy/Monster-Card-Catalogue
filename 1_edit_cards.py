@@ -63,7 +63,7 @@ cards_list = {
     ]
 }
 
-def search_card():
+def edit_card():
     search_name = easygui.enterbox("Enter the name of the card to search\n"
                                    "*Make Sure To Spell Card Right*\n"
                                    "*Capital Letters Matter*")
@@ -74,7 +74,11 @@ def search_card():
             for attribute in card_details:
                 find_card += f"{attribute[0]}: {attribute[1]}\n"
             easygui.msgbox(find_card, "Card Details")
-            easygui.multenterbox( "Hi please enter new card details ", )
+            if easygui.ynbox("Do you want to edit card", choices=["Yes", "No"]):
+                                    easygui.multenterbox("Add Card\nCard attributes must be between 1-25",
+                                    "Please Add New Card",
+                                    ["Name", "Strength", "Speed", "Stealth", "Cunning"])
+
 
 
         else:
@@ -82,4 +86,5 @@ def search_card():
     else:
         easygui.msgbox("Nothing Entered.")
 
-search_card()
+edit_card()
+
