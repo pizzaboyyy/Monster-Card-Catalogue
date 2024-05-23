@@ -104,6 +104,19 @@ def add_card():
 
 
 
+def print_cards():
+    message = ""
+    for card, attributes in cards_list.items():
+        message += f"{card}:\n"
+        for attribute in attributes:
+            message += f"{attribute[0]}: {attribute[1]} "
+        message += "\n"
+        message += "-------------------------------------------------------------------------"
+        message += "\n"
+
+
+    easygui.msgbox(message, title="Cards list")
+
 while True:
     action = easygui.buttonbox("What do you want to do today", "MAIN MENU", choices=["Add", "Exit"])
     if action == "Add":
@@ -111,4 +124,4 @@ while True:
     else:
         break
 
-easygui.msgbox(cards_list)
+easygui.msgbox(print_cards())
