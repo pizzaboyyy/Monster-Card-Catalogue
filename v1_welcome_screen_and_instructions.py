@@ -10,6 +10,9 @@ while True:
                        "                                Delete Cards and Print Cards\n"
                        "\nYou will be prompted with a main menu that you will be able "
                        "                                to interact with\n"
+                       "The cards consist of a name and 4 attributes\n"
+                       "Strength, Speed, Stealth and Cunning\n"
+                       "Which each go from 1-25"
                        "", "Instructions")
         break
 

@@ -97,13 +97,18 @@ def add_card():
                 ["Stealth", card_attributes[2]],
                 ["Cunning", card_attributes[3]]
             ]
-            easygui.msgbox("Card added successfully!", "Success")
+            easygui.msgbox("Card added successfully", "Card Added")
             break
         else:
-            easygui.msgbox("Card details not confirmed please re enter the details", "re enter details")
+            easygui.msgbox("Card details not confirmed please re enter the details", "re-enter details")
 
 
 
-if 1 == 1:
-    add_card()
-    easygui.msgbox(cards_list)
+while True:
+    action = easygui.buttonbox("What do you want to do today", "MAIN MENU", choices=["Add", "Exit"])
+    if action == "Add":
+        add_card()
+    else:
+        break
+
+easygui.msgbox(cards_list)
