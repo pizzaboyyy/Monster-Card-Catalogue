@@ -96,9 +96,9 @@ def edit_card():
                                 cards_list[new_name] = [[field_names[i], new_attributes[i-1]] for i in range(1, 5)]
                                 easygui.msgbox("Card updated successfully", "Card updated")
                         else:
-                            easygui.msgbox("Attributes must be between 1 and 25. No changes were made.", "Error")
+                            easygui.msgbox("Attributes must be between 1 and 25 No changes were made", "Error")
                     except ValueError:
-                        easygui.msgbox("Invalid input. Attributes must be numbers. No changes were made.", "Error")
+                        easygui.msgbox("Invalid input Attributes must be numbers No changes were made", "Error")
                 else:
                     easygui.msgbox("No changes were made.")
         else:
