@@ -63,33 +63,23 @@ cards_list = {
     ]
 }
 
-def search_card():
 
-    while True:
-        search_name = easygui.enterbox("Enter the name of the card to search\n"
-                                       "*Make Sure To Spell Card Right*\n"
-                                       "*Capital Letters Matter*")
-        if search_name:
-            if search_name in cards_list:
-                card_details = cards_list[search_name]
-                find_card = f"Card: {search_name}\n\nAttributes:\n"
-                for attribute in card_details:
-                    find_card += f"{attribute[0]}: {attribute[1]}\n"
-                easygui.msgbox(find_card, "Card Details")
-                easygui.multenterbox( "Hi please enter new card details ", )
-                return
+def delete_card():
+    choices = list(cards_list.keys())
+    selected_card = easygui.choicebox("Please select a card to delete:", "Delete Card", choices=choices)
 
-
+    if selected_card:
+        confirmation = easygui.ynbox(f"Are you sure you want to delete '{selected_card}'?", "Confirmation")
+        if confirmation:
+            # deletes card
+            del cards_list[selected_card]
+            easygui.msgbox(f"Card '{selected_card}' deleted successfully.", "Success")
+            # Cancels deletion
         else:
-            easygui.msgbox(f"                                   Card '{search_name}' not found\n"
-                           f"Please Make Sure You Entered The Card Name Correctly"
-                           f"Please Check Your Spelling!!!")
+            easygui.msgbox("Deletion canceled.", "Information")
+            # If nothing entered it will say nothing entered
     else:
-        easygui.msgbox("Nothing Entered.")
+        easygui.msgbox("No card selected for deletion.", "Information")
 
 
-while True:
-    if easygui.buttonbox("Pick an action", "MAIN MENU", choices=["Search", "Exit"]) == "Search":
-        search_card()
-    else:
-        break
+delete_card()
