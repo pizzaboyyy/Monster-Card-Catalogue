@@ -161,7 +161,8 @@ def edit_card():
             if easygui.ynbox("Do you want to edit this card?", choices=["Yes", "No"]):
                 field_names = ["Card Name", "Strength", "Speed", "Stealth", "Cunning"]
                 current_value = [search_name] + [str(attr[1]) for attr in card_details]
-                new_values = easygui.multenterbox("Edit card Attributes\nAttributes must be between 1-25",
+                new_values = easygui.multenterbox("               Edit card Attributes\nAttributes must be"
+                                                  " between 1-25",
                                                   "Edit Card",
                                                   field_names, current_value)
 
@@ -181,15 +182,16 @@ def edit_card():
                                 easygui.msgbox("Card updated successfully", "Card updated")
                         # error messages
                         else:
-                            easygui.msgbox("Attributes must be between 1 and 25. No changes were made.", "Error")
+                            easygui.msgbox("Attributes must be between 1 and 25. No changes were made", "Error")
                     except ValueError:
-                        easygui.msgbox("Invalid input. Attributes must be numbers. No changes were made.", "Error")
+                        easygui.msgbox("Invalid input. Attributes must be numbers. No changes were made", "Error")
                 else:
-                    easygui.msgbox("No changes were made.")
+                    easygui.msgbox("No changes were made")
         else:
-            easygui.msgbox(f"Card '{search_name}' not found.")
+            easygui.msgbox(f"Card '{search_name}' not found\n"
+                           f"Please check the spelling of the Card")
     else:
-        easygui.msgbox("Nothing entered.")
+        easygui.msgbox("Nothing entered")
 
 
 # Delete function
@@ -228,7 +230,7 @@ def instructions():
 
 
 # Ask if the user wants to view instructions before the main loop
-view_instructions = easygui.ynbox("Do you want to view the instructions first?", "Instructions",
+view_instructions = easygui.ynbox("Hello!, Do you want to view the instructions first?", "Instructions",
                                   choices=["Yes", "No"])
 if view_instructions:
     instructions()
