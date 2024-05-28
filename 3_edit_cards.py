@@ -64,10 +64,12 @@ cards_list = {
 }
 
 def edit_card():
+    # Prompt the user to enter the name of the card to search for
     search_name = easygui.enterbox("Enter the name of the card to search\n"
                                    "*Make Sure To Spell Card Right*\n"
                                    "*Capital Letters Matter*")
     if search_name:
+        # Check if the card exists
         if search_name in cards_list:
             card_details = cards_list[search_name]
             find_card = f"Card: {search_name}\n\nAttributes:\n"
@@ -75,6 +77,7 @@ def edit_card():
                 find_card += f"{attribute[0]}: {attribute[1]}\n"
             easygui.msgbox(find_card, "Card Details")
 
+            # Ask if the user wants to edit the card
             if easygui.ynbox("Do you want to edit this card?", choices=["Yes", "No"]):
                 field_names = ["Card Name", "Strength", "Speed", "Stealth", "Cunning"]
                 current_value = [search_name] + [str(attr[1]) for attr in card_details]
@@ -83,22 +86,24 @@ def edit_card():
                                                   field_names, current_value)
 
                 if new_values:
-                    # update card details
                     new_name = new_values[0]
                     new_attributes = new_values[1:]
                     try:
                         new_attributes = [int(value) for value in new_attributes]
                         if all(1 <= value <= 25 for value in new_attributes):
                             if new_name != search_name and new_name in cards_list:
-                                easygui.msgbox("A card with the new name already exists. No changes were made.", "Error")
+                                easygui.msgbox("A card with the new name already exists. No changes were made.",
+                                               "Error")
+                                # removes card name and adds new name and attributes
                             else:
                                 cards_list.pop(search_name)
-                                cards_list[new_name] = [[field_names[i], new_attributes[i-1]] for i in range(1, 5)]
+                                cards_list[new_name] = [[field_names[i], new_attributes[i - 1]] for i in range(1, 5)]
                                 easygui.msgbox("Card updated successfully", "Card updated")
+                        # error messages
                         else:
-                            easygui.msgbox("Attributes must be between 1 and 25 No changes were made", "Error")
+                            easygui.msgbox("Attributes must be between 1 and 25. No changes were made.", "Error")
                     except ValueError:
-                        easygui.msgbox("Invalid input Attributes must be numbers No changes were made", "Error")
+                        easygui.msgbox("Invalid input. Attributes must be numbers. No changes were made.", "Error")
                 else:
                     easygui.msgbox("No changes were made.")
         else:
