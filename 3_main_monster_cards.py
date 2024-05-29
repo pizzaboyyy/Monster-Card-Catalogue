@@ -140,7 +140,7 @@ def print_cards():
         message += "\n"
         message += "-------------------------------------------------------------------------"
         message += "\n"
-# prints cards
+    # prints cards
     easygui.msgbox(message, title="Cards list")
 
 
@@ -219,15 +219,16 @@ def delete_card():
 # Function to print instructions if user needs
 def instructions():
     easygui.msgbox(
-        "                 --- Welcome to the Monster Card Catalogue ---\n"
+        "---------------- Welcome to the Monster Card Catalogue -------------------\n"
         "-- This Program allows you to manage cards inside a catalogue --\n"
-        "-- You can Store cards, Add cards, Search For Cards, Edit Cards--,\n"
-        "--                                Delete Cards and Print Cards--\n"
-        "\n--You will be prompted with a main menu that you will be able\n"
-        "to interact with--\n"
-        "--The cards consist of a name and 4 attributes--\n"
-        "                               --Strength, Speed, Stealth and Cunning--\n"
-        "                               --Which each go from 1-25--",
+        "-- You can Store cards, Add cards, Search For Cards, Edit Cards--\n"
+        "                                Delete Cards and Print Cards\n"
+        "\n     You will be prompted with a main menu that you will be able\n"
+        "                                            to interact with\n"
+        "           --The cards consist of a name and 4 attributes--\n"
+        "                                           Which Are: \n"
+        "                     Strength, Speed, Stealth and Cunning\n"
+        "                                  Which each go from 1-25",
         "Instructions"
     )
 
@@ -242,17 +243,18 @@ if view_instructions:
 # Main loop
 while True:
     action = easygui.buttonbox("What do you want to do?", "Choose an action",
-                               choices=["Add", "Print", "Delete", "Edit", "Search", "Exit"])
+                               choices=["Add A Card", "Print Cards", "Delete A Card", "Edit A Card",
+                                        "Search For A Card", "Exit Program"])
 
-    if action == "Search":
+    if action == "Search For A Card":
         search_card()
-    elif action == "Print":
+    elif action == "Print Cards":
         print_cards()
-    elif action == "Edit":
+    elif action == "Edit A Card":
         edit_card()
-    elif action == "Delete":
+    elif action == "Delete A Card":
         delete_card()
-    elif action == "Add":
+    elif action == "Add A Card":
         add_card()
-    elif action == "Exit":
+    elif action == "Exit Program":
         break  # exit the loop
